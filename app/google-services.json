@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "934506330056",
+    "project_id": "rullfood-bahrul",
+    "storage_bucket": "rullfood-bahrul.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934506330056:android:573a08cd42dae1596ef2fd",
+        "android_client_info": {
+          "package_name": "com.catnip.rullfood"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASHUsLgPPfmLUQO6twys2Bvqk-NQ4sYds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
