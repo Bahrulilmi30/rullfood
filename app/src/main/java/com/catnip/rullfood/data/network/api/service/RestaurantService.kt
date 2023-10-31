@@ -1,6 +1,8 @@
 package com.catnip.rullfood.data.network.api.service
 
 import com.catnip.rullfood.BuildConfig
+import com.catnip.rullfood.data.network.api.model.category.CategoryItemResponse
+import com.catnip.rullfood.data.network.api.model.category.CategoryResponse
 import com.catnip.rullfood.data.network.api.model.menu.MenuResponse
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -12,6 +14,8 @@ import java.util.concurrent.TimeUnit
 interface RestaurantService {
     @GET("listmenu")
     suspend fun getMenus(@Query("category") category: String?= null) : MenuResponse
+    @GET("categories")
+    suspend fun getCategory(): CategoryResponse
 
     companion object {
         @JvmStatic

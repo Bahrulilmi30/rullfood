@@ -27,7 +27,7 @@
             style="@style/TextAppearance.Material3.TitleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Hallo Bahrul"
+            android:text="Hallo Bahrul"
             android:textColor="@color/black"
             android:textStyle="bold" />
 

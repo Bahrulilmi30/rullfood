@@ -7,11 +7,6 @@ import com.catnip.rullfood.data.network.firebase.auth.FirebaseAuthDataSource
 import com.catnip.rullfood.utils.ResultWrapper
 import com.catnip.rullfood.utils.proceedFlow
 import kotlinx.coroutines.flow.Flow
-
-/**
-Written with love by Muhammad Hermas Yuda Pamungkas
-Github : https://github.com/hermasyp
- **/
 interface UserRepository {
     suspend fun doLogin(email: String, password: String): Flow<ResultWrapper<Boolean>>
 
