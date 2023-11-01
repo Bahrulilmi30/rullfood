@@ -24,6 +24,7 @@ import com.catnip.rullfood.presentation.home.adapter.CategoryListAdapter
 import com.catnip.rullfood.presentation.home.adapter.FoodListAdapter
 import com.catnip.rullfood.utils.GenericViewModelFactory
 import com.catnip.rullfood.utils.proceedWhen
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 
 class HomeFragment : Fragment() {
 
@@ -52,7 +53,8 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     private val viewModel : HomeViewModel by viewModels {
-        val service = RestaurantService.invoke()
+        val chuckerInterceptor = ChuckerInterceptor(requireContext().applicationContext)
+        val service = RestaurantService.invoke(chuckerInterceptor)
         val dataSource = RestaurantDataSourceImpl(service)
         val repository = MenuRepositoryImpl(dataSource)
         GenericViewModelFactory.create(HomeViewModel(repository))

@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Menu(
+    val id: Int,
     val descOfMenu: String,
     val locationName: String,
     val locationUrl: String,

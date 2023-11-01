@@ -4,10 +4,15 @@ import com.catnip.rullfood.BuildConfig
 import com.catnip.rullfood.data.network.api.model.category.CategoryItemResponse
 import com.catnip.rullfood.data.network.api.model.category.CategoryResponse
 import com.catnip.rullfood.data.network.api.model.menu.MenuResponse
+import com.catnip.rullfood.data.network.api.model.order.OrderRequest
+import com.catnip.rullfood.data.network.api.model.order.OrderResponse
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
@@ -17,10 +22,16 @@ interface RestaurantService {
     @GET("categories")
     suspend fun getCategory(): CategoryResponse
 
+    @POST("order")
+    suspend fun createOrder(@Body orderRequest: OrderRequest): OrderResponse
+
     companion object {
         @JvmStatic
-        operator fun invoke(): RestaurantService {
+        operator fun invoke(
+            chucker: ChuckerInterceptor
+        ): RestaurantService {
             val okHttpClient = OkHttpClient.Builder()
+                .addInterceptor(chucker)
                 .connectTimeout(120, TimeUnit.SECONDS)
                 .readTimeout(120, TimeUnit.SECONDS)
                 .build()

@@ -5,7 +5,6 @@ import com.catnip.rullfood.data.network.api.model.category.toCategoryList
 import com.catnip.rullfood.data.network.api.model.menu.toMenuList
 import com.catnip.rullfood.model.Category
 import com.catnip.rullfood.model.Menu
-import com.catnip.rullfood.model.Product
 
 import com.catnip.rullfood.utils.ResultWrapper
 import com.catnip.rullfood.utils.proceedFlow
