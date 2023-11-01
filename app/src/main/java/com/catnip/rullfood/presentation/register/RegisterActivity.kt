@@ -7,7 +7,7 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
-import com.catnip.rullfood.MainActivity
+import com.catnip.rullfood.presentation.main.MainActivity
 import com.catnip.rullfood.R
 import com.catnip.rullfood.data.network.firebase.auth.FirebaseAuthDataSourceImpl
 import com.catnip.rullfood.data.repository.UserRepositoryImpl

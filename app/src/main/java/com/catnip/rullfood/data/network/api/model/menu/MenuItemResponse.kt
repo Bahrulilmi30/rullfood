@@ -7,6 +7,8 @@ import com.catnip.rullfood.model.Menu
 
 @Keep
 data class MenuItemResponse(
+    @SerializedName("id")
+    val id : Int,
     @SerializedName("descOfMenu")
     val descOfMenu: String?,
     @SerializedName("locationName")
@@ -21,6 +23,7 @@ data class MenuItemResponse(
     val productImgUrl: String?
 )
 fun MenuItemResponse.toMenu()= Menu(
+    id = this.id,
     descOfMenu = this.descOfMenu.orEmpty(),
     locationName = this.locationName.orEmpty(),
     locationUrl = this.locationUrl.orEmpty(),

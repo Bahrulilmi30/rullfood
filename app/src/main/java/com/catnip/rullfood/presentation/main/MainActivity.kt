@@ -1,12 +1,10 @@
-package com.catnip.rullfood
+package com.catnip.rullfood.presentation.main
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.catnip.rullfood.R
 import com.catnip.rullfood.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

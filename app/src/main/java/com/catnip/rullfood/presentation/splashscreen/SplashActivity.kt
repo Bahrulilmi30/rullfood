@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.catnip.rullfood.MainActivity
+import com.catnip.rullfood.presentation.main.MainActivity
 import com.catnip.rullfood.data.network.firebase.auth.FirebaseAuthDataSourceImpl
 import com.catnip.rullfood.data.repository.UserRepositoryImpl
 import com.catnip.rullfood.databinding.ActivitySplashBinding

@@ -49,4 +49,12 @@
         app:spanCount="1"
         tools:listitem="@layout/item_linear_menu" />
 
+    <include
+        android:id="@+id/layout_state_category"
+        layout="@layout/common_layout_content_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
