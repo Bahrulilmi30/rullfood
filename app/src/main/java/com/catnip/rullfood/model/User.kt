@@ -1,4 +1,4 @@
-package com.catnip.rullfood.data.model
+package com.catnip.rullfood.model
 
 import com.google.firebase.auth.FirebaseUser
 

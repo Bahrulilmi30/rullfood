@@ -1,6 +1,6 @@
-package com.catnip.rullfood.data.database.mapper
+package com.catnip.rullfood.data.local.database.mapper
 
-import com.catnip.rullfood.data.database.entity.CartEntity
+import com.catnip.rullfood.data.local.database.entity.CartEntity
 import com.catnip.rullfood.model.Cart
 
 fun CartEntity?.toCart() = Cart(

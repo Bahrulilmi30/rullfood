@@ -61,4 +61,5 @@
     <string name="text_hello_user">Hallo Bahrul</string>
     <string name="text_greetings">Mau makan apa hari ini?</string>
     <string name="text_list_of_menu">List of menu</string>
+    <string name="hello">Hello %1$s</string>
 </resources>

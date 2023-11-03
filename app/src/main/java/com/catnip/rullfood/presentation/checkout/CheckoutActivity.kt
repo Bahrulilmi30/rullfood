@@ -7,9 +7,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.catnip.rullfood.R
-import com.catnip.rullfood.data.database.AppDatabase
-import com.catnip.rullfood.data.database.datasource.CartDataSource
-import com.catnip.rullfood.data.database.datasource.CartDatabaseDataSource
+import com.catnip.rullfood.data.local.database.AppDatabase
+import com.catnip.rullfood.data.local.database.datasource.CartDataSource
+import com.catnip.rullfood.data.local.database.datasource.CartDatabaseDataSource
 import com.catnip.rullfood.data.network.api.datasource.RestaurantDataSourceImpl
 import com.catnip.rullfood.data.network.api.service.RestaurantService
 import com.catnip.rullfood.data.repository.CartRepository

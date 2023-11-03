@@ -9,9 +9,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.catnip.rullfood.R
-import com.catnip.rullfood.data.database.AppDatabase
-import com.catnip.rullfood.data.database.datasource.CartDataSource
-import com.catnip.rullfood.data.database.datasource.CartDatabaseDataSource
+import com.catnip.rullfood.data.local.database.AppDatabase
+import com.catnip.rullfood.data.local.database.datasource.CartDataSource
+import com.catnip.rullfood.data.local.database.datasource.CartDatabaseDataSource
 import com.catnip.rullfood.data.network.api.datasource.RestaurantDataSourceImpl
 import com.catnip.rullfood.data.network.api.service.RestaurantService
 import com.catnip.rullfood.data.repository.CartRepository
@@ -31,7 +31,7 @@ class CartFragment : Fragment() {
 
     private lateinit var binding: FragmentCartBinding
 
-//    private val viewModel: CartViewModel by viewModel()
+//    private val viewModel: CartViewModel by viewModels<CartViewModel>()
 
     private val viewModel: CartViewModel by viewModels {
         val database = AppDatabase.getInstance(requireContext())
