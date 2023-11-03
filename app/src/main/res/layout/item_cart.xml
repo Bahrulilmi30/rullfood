@@ -5,9 +5,9 @@
     android:id="@+id/cv_item"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    app:cardBackgroundColor="@color/white"
     android:layout_margin="10dp"
     android:elevation="4dp"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="14dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,43 +16,46 @@
         android:layout_margin="8dp">
 
         <ImageView
-            android:scaleType="centerCrop"
             android:id="@+id/iv_pict_menu"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:src="@tools:sample/avatars"
             android:layout_width="110dp"
-            android:layout_height="100dp"/>
+            android:layout_height="100dp"
+            android:contentDescription="@string/image_content_desc"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
         <TextView
             android:id="@+id/tv_text_menu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="10dp"
-            android:textStyle="bold"
-            android:textSize="15sp"
             android:text="@string/text_nama"
-            app:layout_constraintStart_toEndOf="@id/iv_pict_menu"/>
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iv_pict_menu"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_harga_menu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:textStyle="bold"
-            android:textSize="18sp"
             android:text="@string/text_harga"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/iv_pict_menu"
-            app:layout_constraintTop_toBottomOf="@id/tv_text_menu"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_text_menu" />
 
         <ImageView
             android:id="@+id/iv_delete"
             android:layout_width="35dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_height="35dp"
-            android:src="@drawable/ic_delete"/>
-
+            android:layout_margin="5dp"
+            android:contentDescription="@string/image_content_desc"
+            android:src="@drawable/ic_delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <LinearLayout
@@ -62,14 +65,15 @@
             android:layout_marginVertical="10dp"
             android:gravity="center"
             android:weightSum="3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/et_notes_item">
+            app:layout_constraintBottom_toTopOf="@id/et_notes_item"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
                 android:id="@+id/iv_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:contentDescription="@string/image_content_desc"
                 android:paddingHorizontal="10dp"
                 android:src="@drawable/ic_minus" />
 
@@ -86,6 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:contentDescription="@string/image_content_desc"
                 android:paddingHorizontal="10dp"
                 android:src="@drawable/ic_plus" />
         </LinearLayout>
@@ -95,10 +100,10 @@
             style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/bg_button_rounded_border_transparent"
-            android:hint="Notes"
+            android:hint="@string/text_hint_notes"
             android:imeOptions="actionDone"
             android:inputType="text"
             android:maxLines="3"

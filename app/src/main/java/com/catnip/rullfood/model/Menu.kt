@@ -12,4 +12,4 @@ data class Menu(
     val name: String,
     val price: Double,
     val productImgUrl: String
-): Parcelable
+) : Parcelable

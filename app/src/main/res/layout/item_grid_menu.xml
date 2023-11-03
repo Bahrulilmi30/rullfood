@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_centerInParent="true"
-    app:cardCornerRadius="16dp"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,11 +16,12 @@
         android:padding="16dp">
 
         <ImageView
-            tools:src="@tools:sample/avatars"
             android:id="@+id/iv_pict_menu"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:scaleType="centerCrop"/>
+            android:contentDescription="@string/image_content_desc"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/tv_text_menu"
@@ -29,18 +29,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:text="@string/text_name_of_menu"
             android:textSize="18sp"
-            tools:text="Nama Menu"
             android:textStyle="bold" />
 
         <TextView
-            tools:text="Harga Menu"
             android:id="@+id/tv_harga_menu"
             style="@style/TextAppearance.Material3.HeadlineLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textStyle="bold"
-            android:textSize="18sp" />
+            android:text="@string/text_price"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

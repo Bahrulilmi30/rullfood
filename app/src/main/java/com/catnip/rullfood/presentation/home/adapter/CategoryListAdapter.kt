@@ -11,22 +11,25 @@ import com.catnip.rullfood.model.Category
 import com.catnip.rullfood.presentation.home.adapter.viewholder.CategoryViewHolder
 
 class CategoryListAdapter(
-    private val onItemClick :(Category)-> Unit
-): RecyclerView.Adapter<CategoryViewHolder>() {
-    private val differ = AsyncListDiffer(this, object: DiffUtil.ItemCallback<Category>(){
+    private val onItemClick: (Category) -> Unit
+) : RecyclerView.Adapter<CategoryViewHolder>() {
+    private val differ = AsyncListDiffer(
+        this,
+        object : DiffUtil.ItemCallback<Category>() {
 
-        override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
-            return oldItem.id == newItem.id
+            override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
+                return oldItem.hashCode() == newItem.hashCode()
+            }
         }
-
-        override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
-            return oldItem.hashCode() == newItem.hashCode()
-        }
-
-    })
+    )
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(
-            binding = ItemCategoriesBinding.inflate(LayoutInflater.from(parent.context), parent, false), onItemClick
+            binding = ItemCategoriesBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+            onItemClick
         )
     }
 

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.rullfood"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.checkout.CheckoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.details.DetailActivity"
             android:exported="false" />
         <activity

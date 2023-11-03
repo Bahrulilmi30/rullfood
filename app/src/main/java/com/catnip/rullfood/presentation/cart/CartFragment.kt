@@ -1,5 +1,6 @@
 package com.catnip.rullfood.presentation.cart
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import com.catnip.rullfood.databinding.FragmentCartBinding
 import com.catnip.rullfood.model.Cart
 import com.catnip.rullfood.presentation.cart.adapter.CartListAdapter
 import com.catnip.rullfood.presentation.cart.adapter.CartListener
+import com.catnip.rullfood.presentation.checkout.CheckoutActivity
 import com.catnip.rullfood.utils.GenericViewModelFactory
 import com.catnip.rullfood.utils.hideKeyboard
 import com.catnip.rullfood.utils.proceedWhen
@@ -27,22 +29,23 @@ import com.chuckerteam.chucker.api.ChuckerInterceptor
 
 class CartFragment : Fragment() {
 
-   private lateinit var binding : FragmentCartBinding
+    private lateinit var binding: FragmentCartBinding
 
-   private val viewModel: CartViewModel by viewModels {
-       val database = AppDatabase.getInstance(requireContext())
-       val cartdao = database.cartDao()
-       val cartdataSource: CartDataSource = CartDatabaseDataSource(cartdao)
-       val chuckerInterceptor = ChuckerInterceptor(requireContext().applicationContext)
-       val service = RestaurantService.invoke(chuckerInterceptor)
-       val apiDataSource = RestaurantDataSourceImpl(service)
-       val repo: CartRepository = CartRepositoryImpl(cartdataSource,apiDataSource)
-       GenericViewModelFactory.create(CartViewModel(repo))
+//    private val viewModel: CartViewModel by viewModel()
 
-   }
+    private val viewModel: CartViewModel by viewModels {
+        val database = AppDatabase.getInstance(requireContext())
+        val cartdao = database.cartDao()
+        val cartdataSource: CartDataSource = CartDatabaseDataSource(cartdao)
+        val chuckerInterceptor = ChuckerInterceptor(requireContext().applicationContext)
+        val service = RestaurantService.invoke(chuckerInterceptor)
+        val apiDataSource = RestaurantDataSourceImpl(service)
+        val repo: CartRepository = CartRepositoryImpl(cartdataSource, apiDataSource)
+        GenericViewModelFactory.create(CartViewModel(repo))
+    }
 
-    private val adapter : CartListAdapter by lazy {
-        CartListAdapter(object : CartListener{
+    private val adapter: CartListAdapter by lazy {
+        CartListAdapter(object : CartListener {
             override fun onMinusTotalItemCartClicked(cart: Cart) {
                 viewModel.decreaseCart(cart)
             }
@@ -59,17 +62,15 @@ class CartFragment : Fragment() {
                 viewModel.setCartNotes(cart)
                 hideKeyboard()
             }
-
         })
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentCartBinding.inflate(inflater,container,false)
+        binding = FragmentCartBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -86,7 +87,7 @@ class CartFragment : Fragment() {
     }
 
     private fun observeData() {
-        viewModel.cartList.observe(viewLifecycleOwner){
+        viewModel.cartList.observe(viewLifecycleOwner) {
             it.proceedWhen(
                 doOnSuccess = { result ->
                     binding.layoutState.root.isVisible = false
@@ -94,6 +95,7 @@ class CartFragment : Fragment() {
                     binding.layoutState.tvError.isVisible = false
                     binding.rvCart.isVisible = true
                     binding.cvSectionCheckout.isVisible = true
+
                     result.payload?.let { (carts, totalPrice) ->
                         adapter.submitData(carts)
                         binding.tvTotalPrice.text = totalPrice.toCurrencyFormat()
@@ -103,14 +105,17 @@ class CartFragment : Fragment() {
                     binding.layoutState.root.isVisible = true
                     binding.layoutState.pbLoading.isVisible = true
                     binding.layoutState.tvError.isVisible = false
+                    binding.cvSectionCheckout.isVisible = false
                     binding.rvCart.isVisible = false
-                }, doOnError = { err ->
+                },
+                doOnError = { err ->
                     binding.layoutState.root.isVisible = true
                     binding.layoutState.pbLoading.isVisible = false
                     binding.layoutState.tvError.isVisible = true
                     binding.layoutState.tvError.text = err.exception?.message.orEmpty()
                     binding.rvCart.isVisible = false
-                }, doOnEmpty = { data ->
+                },
+                doOnEmpty = { data ->
                     binding.layoutState.root.isVisible = true
                     binding.layoutState.pbLoading.isVisible = false
                     binding.layoutState.tvError.isVisible = true
@@ -120,11 +125,14 @@ class CartFragment : Fragment() {
                         binding.tvTotalPrice.text = totalPrice.toCurrencyFormat()
                     }
                     binding.rvCart.isVisible = false
-                })
+                }
+            )
         }
     }
 
     private fun setClickListener() {
-
+        binding.btnCheckout.setOnClickListener {
+            context?.startActivity(Intent(requireContext(), CheckoutActivity::class.java))
+        }
     }
 }

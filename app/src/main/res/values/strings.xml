@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">RullFood</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="hint_name">Your name</string>
     <string name="hint_email">Email</string>
@@ -31,4 +29,36 @@
     <string name="text_nama_lokasi">Jl. BSD Green Office Park Jl. BSD Grand Boulevard, Sampora, BSD, Kabupaten Tangerang, Banten 15345</string>
     <string name="text_cart_is_empty">Cart is Empty</string>
     <string name="total_quantity">x%s</string>
+    <string name="text_Done">Done!  Thank You :D</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_profile">Profile</string>
+    <string name="text_btn_checkout">Checkout</string>
+    <string name="text_label_total">Total Price</string>
+    <string name="text_total_price">IDR. 80.000.000</string>
+    <string name="text_cart">Cart Shopping</string>
+    <string name="textt_page_confirm">Page Confirmation</string>
+    <string name="image_content_desc">gambar</string>
+    <string name="text_add_to_cart">Add To Cart</string>
+    <string name="text_strip">-</string>
+    <string name="text_name_of_menu">Menu Name</string>
+    <string name="text_price">Rp Price</string>
+    <string name="text_desc">Nama saya adalah muhamamd bahrul ilmi, saya kuliah di universitas islam majapahit mojokerto, saya mengambil jurusan teknik infromatika prodi teknik semester 5</string>
+    <string name="text_profile">Profile</string>
+    <string name="text_username">Username</string>
+    <string name="text_password">Password</string>
+    <string name="text_email">Email</string>
+    <string name="text_telp">Telephone</string>
+    <string name="text_hint_notes">Notes</string>
+    <string name="text_notes">Pake saos</string>
+    <string name="text_disc">Disc 30%</string>
+    <string name="text_banner_desc">Pesan makanan lewat aplikasi dan segera dapatkan diskonmu !</string>
+    <string name="text_delivery_method">Delivery Method</string>
+    <string name="text_pickup">Pick Up</string>
+    <string name="text_delivery">Delivery</string>
+    <string name="text_payment_method">Payment Method</string>
+    <string name="text_cash">Cash</string>
+    <string name="text_ewallet">E-Wallet</string>
+    <string name="text_hello_user">Hallo Bahrul</string>
+    <string name="text_greetings">Mau makan apa hari ini?</string>
+    <string name="text_list_of_menu">List of menu</string>
 </resources>

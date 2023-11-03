@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cv_item"
-    android:layout_marginVertical="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="10dp"
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,33 +16,36 @@
         android:layout_margin="8dp">
 
         <ImageView
-            android:scaleType="centerCrop"
             android:id="@+id/iv_pict_menu"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:src="@tools:sample/avatars"
             android:layout_width="110dp"
-            android:layout_height="100dp"/>
+            android:layout_height="100dp"
+            android:contentDescription="@string/image_content_desc"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
         <TextView
             android:id="@+id/tv_text_menu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="10dp"
-            android:textStyle="bold"
+            android:text="@string/text_name_of_menu"
             android:textSize="15sp"
-            tools:text="Nama Makanan"
-            app:layout_constraintStart_toEndOf="@id/iv_pict_menu"/>
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iv_pict_menu"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_harga_menu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:textStyle="bold"
+            android:text="@string/text_price"
             android:textSize="18sp"
-            tools:text="Harga Makanan"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/iv_pict_menu"
-            app:layout_constraintTop_toBottomOf="@id/tv_text_menu"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_text_menu" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

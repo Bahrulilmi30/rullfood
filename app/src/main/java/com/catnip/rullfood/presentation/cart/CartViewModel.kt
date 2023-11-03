@@ -11,33 +11,33 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class CartViewModel(
-    private val repository : CartRepository
+    private val repository: CartRepository
 ) : ViewModel() {
 
     val cartList = repository.getUserCardData().asLiveData(Dispatchers.IO)
 
-    fun decreaseCart(menu : Cart){
+    fun decreaseCart(menu: Cart) {
         viewModelScope.launch {
             repository.decreaseCart(menu).collect {
                 Log.d("CartViewModel", " : Decrease Cart -> $it ${it.payload} ${it.exception}")
             }
         }
     }
-    fun increaseCart(menu: Cart){
+    fun increaseCart(menu: Cart) {
         viewModelScope.launch {
             repository.increaseCart(menu).collect {
                 Log.d("CartViewModel", " : Increase Cart -> $it ${it.payload} ${it.exception}")
             }
         }
     }
-    fun removeCart(menu: Cart){
+    fun removeCart(menu: Cart) {
         viewModelScope.launch {
             repository.deleteCart(menu).collect {
                 Log.d("CartViewModel", " : Remove Cart -> $it ${it.payload} ${it.exception}")
             }
         }
     }
-    fun setCartNotes(menu: Cart){
+    fun setCartNotes(menu: Cart) {
         viewModelScope.launch { repository.setCartNotes(menu).collect() }
     }
 }

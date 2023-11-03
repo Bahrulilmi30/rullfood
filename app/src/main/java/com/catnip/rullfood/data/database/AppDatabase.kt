@@ -7,13 +7,12 @@ import androidx.room.RoomDatabase
 import com.catnip.rullfood.data.database.dao.CartDao
 import com.catnip.rullfood.data.database.entity.CartEntity
 
-
 @Database(
-entities = [CartEntity::class],
-version = 2,
-exportSchema = true
+    entities = [CartEntity::class],
+    version = 2,
+    exportSchema = true
 )
-abstract class AppDatabase: RoomDatabase(){
+abstract class AppDatabase : RoomDatabase() {
     abstract fun cartDao(): CartDao
 
     companion object {
@@ -26,7 +25,6 @@ abstract class AppDatabase: RoomDatabase(){
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
             return INSTANCE ?: synchronized(this) {
-
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,

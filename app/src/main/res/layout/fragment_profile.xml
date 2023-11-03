@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_header_profile"
@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Profile"
+            android:text="@string/text_profile"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -32,6 +32,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="10dp"
+            android:contentDescription="@string/image_content_desc"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -57,7 +58,8 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_margin="20dp"
-            android:src="@drawable/ic_banner"
+            android:contentDescription="@string/image_content_desc"
+            android:src="@drawable/ic_user_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="5dp"
-                android:text="Username"
+                android:text="@string/text_username"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -99,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="5dp"
-                android:text="Password"
+                android:text="@string/text_password"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -115,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="5dp"
-                android:text="Email"
+                android:text="@string/text_email"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -132,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="5dp"
-                android:text="No.Telp"
+                android:text="@string/text_telp"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

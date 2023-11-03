@@ -7,15 +7,14 @@ import com.catnip.rullfood.data.network.api.model.order.OrderResponse
 import com.catnip.rullfood.data.network.api.service.RestaurantService
 
 interface RestaurantDataSource {
-    suspend fun getMenus(category: String?= null) : MenuResponse
+    suspend fun getMenus(category: String? = null): MenuResponse
     suspend fun getCategory(): CategoryResponse
     suspend fun createOrder(orderRequest: OrderRequest): OrderResponse
-
 }
 
 class RestaurantDataSourceImpl(
     private val service: RestaurantService
-): RestaurantDataSource{
+) : RestaurantDataSource {
     override suspend fun getMenus(category: String?): MenuResponse {
         return service.getMenus(category)
     }
@@ -27,6 +26,4 @@ class RestaurantDataSourceImpl(
     override suspend fun createOrder(orderRequest: OrderRequest): OrderResponse {
         return service.createOrder(orderRequest)
     }
-
-
 }

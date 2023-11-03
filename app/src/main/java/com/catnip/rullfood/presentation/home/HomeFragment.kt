@@ -4,15 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.catnip.rullfood.data.network.api.datasource.RestaurantDataSource
 import com.catnip.rullfood.data.network.api.datasource.RestaurantDataSourceImpl
 import com.catnip.rullfood.data.network.api.service.RestaurantService
 import com.catnip.rullfood.data.repository.MenuRepositoryImpl
@@ -28,7 +24,7 @@ import com.chuckerteam.chucker.api.ChuckerInterceptor
 
 class HomeFragment : Fragment() {
 
-    private val adapter : FoodListAdapter by lazy{
+    private val adapter: FoodListAdapter by lazy {
         FoodListAdapter(
             adapterLayoutMode = AdapterLayoutMode.GRID,
             onItemClick = {
@@ -36,7 +32,7 @@ class HomeFragment : Fragment() {
             }
         )
     }
-    private val categoryAdapter : CategoryListAdapter by lazy {
+    private val categoryAdapter: CategoryListAdapter by lazy {
         CategoryListAdapter(
             onItemClick = {
                 viewModel.getMenus(it.slug?.lowercase())
@@ -52,7 +48,9 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
-    private val viewModel : HomeViewModel by viewModels {
+//    private val viewModel: HomeViewModel by viewModel()
+
+    private val viewModel: HomeViewModel by viewModels {
         val chuckerInterceptor = ChuckerInterceptor(requireContext().applicationContext)
         val service = RestaurantService.invoke(chuckerInterceptor)
         val dataSource = RestaurantDataSourceImpl(service)
@@ -65,7 +63,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater,container,false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -75,6 +73,15 @@ class HomeFragment : Fragment() {
         invokeData()
         observeData()
         setUpCategoryRecyclerView()
+        setUpSwitch()
+    }
+
+    private fun setUpSwitch() {
+        binding.inclMainMenu.switchListGrid.setOnCheckedChangeListener { _, isChecked ->
+            (binding.inclMainMenu.rvMenu.layoutManager as GridLayoutManager).spanCount = if (isChecked)1 else 2
+            adapter.adapterLayoutMode = if (isChecked) AdapterLayoutMode.LINEAR else AdapterLayoutMode.GRID
+            adapter.refreshList()
+        }
     }
 
     private fun setUpCategoryRecyclerView() {
@@ -86,11 +93,10 @@ class HomeFragment : Fragment() {
         val span = if (adapter.adapterLayoutMode == AdapterLayoutMode.GRID) 2 else 1
         binding.inclMainMenu.rvMenu.adapter = adapter
         binding.inclMainMenu.rvMenu.layoutManager = GridLayoutManager(requireContext(), span)
-
     }
 
     private fun observeData() {
-        viewModel.menu.observe( viewLifecycleOwner){
+        viewModel.menu.observe(viewLifecycleOwner) {
             it.proceedWhen(
                 doOnSuccess = {
                     binding.inclMainMenu.rvMenu.isVisible = true
@@ -100,15 +106,14 @@ class HomeFragment : Fragment() {
                 },
                 doOnLoading = {
                     binding.inclMainMenu.rvMenu.isVisible = false
-
                 },
                 doOnError = {
                     binding.inclMainMenu.rvMenu.isVisible = false
                 }
             )
         }
-        viewModel.category.observe(viewLifecycleOwner){
-            it.proceedWhen (
+        viewModel.category.observe(viewLifecycleOwner) {
+            it.proceedWhen(
                 doOnSuccess = {
                     binding.inclTopMenu.rvCategory.isVisible = true
                     it.payload?.let { category ->
@@ -131,9 +136,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun invokeData() {
-       viewModel.getMenus()
+        viewModel.getMenus()
         viewModel.getCategory()
     }
-
 }
-
