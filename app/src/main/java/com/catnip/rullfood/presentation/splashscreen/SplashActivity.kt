@@ -1,15 +1,15 @@
 package com.catnip.rullfood.presentation.splashscreen
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.catnip.rullfood.presentation.main.MainActivity
 import com.catnip.rullfood.data.network.firebase.auth.FirebaseAuthDataSourceImpl
 import com.catnip.rullfood.data.repository.UserRepositoryImpl
 import com.catnip.rullfood.databinding.ActivitySplashBinding
 import com.catnip.rullfood.presentation.login.LoginActivity
+import com.catnip.rullfood.presentation.main.MainActivity
 import com.catnip.rullfood.utils.GenericViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
@@ -50,15 +50,18 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun navigateToLogin() {
-        startActivity(Intent(this, LoginActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        })
-
+        startActivity(
+            Intent(this, LoginActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+        )
     }
 
     private fun navigateToMain() {
-        startActivity(Intent(this, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        })
+        startActivity(
+            Intent(this, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+        )
     }
 }

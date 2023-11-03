@@ -10,5 +10,4 @@ Github : https://github.com/hermasyp
 class SplashViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun isUserLoggedIn() = repository.isLoggedIn()
-
 }

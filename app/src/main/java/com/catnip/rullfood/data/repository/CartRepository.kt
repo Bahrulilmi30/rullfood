@@ -40,7 +40,7 @@ interface CartRepository {
 class CartRepositoryImpl(
     private val dataSource: CartDataSource,
     private val restaurantDataSource: RestaurantDataSource
-) : CartRepository{
+) : CartRepository {
     override fun getUserCardData(): Flow<ResultWrapper<Pair<List<Cart>, Double>>> {
         return dataSource.getAllCarts()
             .map<List<CartEntity>, ResultWrapper<Pair<List<Cart>, Double>>> {
@@ -54,10 +54,11 @@ class CartRepositoryImpl(
                     Pair(result, totalPrice)
                 }
             }.map {
-                if (it.payload?.first?.isEmpty() == true)
+                if (it.payload?.first?.isEmpty() == true) {
                     ResultWrapper.Empty(it.payload)
-                else
+                } else {
                     it
+                }
             }
             .onStart {
                 emit(ResultWrapper.Loading())
@@ -82,7 +83,7 @@ class CartRepositoryImpl(
                 )
                 affecttedRow > 0
             }
-        }?: flow {
+        } ?: flow {
             emit(ResultWrapper.Error(IllegalStateException("Product ID not found")))
         }
     }

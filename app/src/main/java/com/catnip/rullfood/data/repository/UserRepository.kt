@@ -77,5 +77,4 @@ class UserRepositoryImpl(private val dataSource: FirebaseAuthDataSource) : UserR
     override fun sendChangePasswordRequestByEmail(): Boolean {
         return dataSource.sendChangePasswordRequestByEmail()
     }
-
 }

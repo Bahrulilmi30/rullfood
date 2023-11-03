@@ -1,11 +1,8 @@
 package com.catnip.rullfood.data.network.api.model.category
 
-
-import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
-import com.catnip.rullfood.data.network.api.model.menu.toMenu
-import com.catnip.rullfood.data.network.api.model.menu.toMenuList
 import com.catnip.rullfood.model.Category
+import com.google.gson.annotations.SerializedName
 
 @Keep
 data class CategoryItemResponse(
@@ -20,7 +17,7 @@ data class CategoryItemResponse(
 )
 
 fun CategoryItemResponse.toCategory() = Category(
-    id = this.id?: 0,
+    id = this.id ?: 0,
     categoryImgUrl = this.imgUrlCategory.orEmpty(),
     name = this.nameOfCategory.orEmpty(),
     slug = this.slug.orEmpty()

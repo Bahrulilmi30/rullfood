@@ -10,10 +10,10 @@ import com.catnip.rullfood.model.Menu
 import com.catnip.rullfood.utils.ResultWrapper
 import kotlinx.coroutines.launch
 
-class DetailViewModel (
+class DetailViewModel(
     private val cartRepository: CartRepository,
-    private val extras : Bundle?
-): ViewModel(){
+    private val extras: Bundle?
+) : ViewModel() {
     val menu = extras?.getParcelable<Menu>(DetailActivity.EXTRA_FOOD)
     val priceLivedata = MutableLiveData<Double>().apply {
         postValue(0.0)
@@ -22,16 +22,16 @@ class DetailViewModel (
         postValue(0)
     }
     private val _addToCartResult = MutableLiveData<ResultWrapper<Boolean>>()
-    val addToCartResult : LiveData<ResultWrapper<Boolean>>
+    val addToCartResult: LiveData<ResultWrapper<Boolean>>
         get() = _addToCartResult
 
-    fun add(){
+    fun add() {
         val count = (productCountLiveData.value ?: 0) + 1
         productCountLiveData.postValue(count)
-        priceLivedata.postValue(menu?.price?.times(count)?: 0.0)
+        priceLivedata.postValue(menu?.price?.times(count) ?: 0.0)
     }
 
-    fun minus(){
+    fun minus() {
         if ((productCountLiveData.value ?: 0) > 0) {
             val count = (productCountLiveData.value ?: 0) - 1
             productCountLiveData.postValue(count)

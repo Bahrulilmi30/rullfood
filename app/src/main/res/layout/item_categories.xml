@@ -17,6 +17,7 @@
             android:id="@+id/iv_category_icon"
             android:layout_width="46dp"
             android:layout_height="46dp"
+            android:contentDescription="@string/image_content_desc"
             tools:src="@tools:sample/avatars" />
 
         <TextView

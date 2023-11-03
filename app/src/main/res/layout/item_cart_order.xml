@@ -10,6 +10,7 @@
         android:id="@+id/iv_product_image"
         android:layout_width="0dp"
         android:layout_height="80dp"
+        android:contentDescription="@string/image_content_desc"
         android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="H,1:1.3"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,12 +24,12 @@
         android:layout_marginHorizontal="8dp"
         android:ellipsize="end"
         android:maxLines="2"
+        android:text="@string/text_name_of_menu"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/tv_total_quantity"
         app:layout_constraintStart_toEndOf="@id/iv_product_image"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Banana auoh idfuwh naiofnaqwufnaowfhn oinfoaifnoi" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_product_price"
@@ -37,10 +38,10 @@
         android:layout_marginHorizontal="8dp"
         android:ellipsize="end"
         android:maxLines="1"
+        android:text="@string/text_price"
         app:layout_constraintEnd_toStartOf="@+id/tv_total_quantity"
         app:layout_constraintStart_toEndOf="@+id/iv_product_image"
-        app:layout_constraintTop_toBottomOf="@id/tv_product_name"
-        tools:text="IDR. 20.000" />
+        app:layout_constraintTop_toBottomOf="@id/tv_product_name" />
 
     <TextView
         android:id="@+id/tv_total_quantity"
@@ -58,11 +59,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="4dp"
+        android:text="@string/text_notes"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_total_quantity"
         app:layout_constraintStart_toEndOf="@+id/iv_product_image"
-        app:layout_constraintTop_toBottomOf="@+id/tv_product_price"
-        tools:text="Pake saos" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_product_price" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

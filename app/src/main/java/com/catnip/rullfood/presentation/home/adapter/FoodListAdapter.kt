@@ -15,32 +15,40 @@ import com.catnip.rullfood.presentation.home.adapter.viewholder.FoodItemLinearVi
 
 class FoodListAdapter(
     var adapterLayoutMode: AdapterLayoutMode,
-    private val onItemClick :(Menu)-> Unit
-): RecyclerView.Adapter<ViewHolder>(){
-    private val differ = AsyncListDiffer(this, object: DiffUtil.ItemCallback<Menu>(){
-        override fun areItemsTheSame(oldItem: Menu, newItem: Menu): Boolean {
-            return oldItem.name == newItem.name
-        }
+    private val onItemClick: (Menu) -> Unit
+) : RecyclerView.Adapter<ViewHolder>() {
+    private val differ = AsyncListDiffer(
+        this,
+        object : DiffUtil.ItemCallback<Menu>() {
+            override fun areItemsTheSame(oldItem: Menu, newItem: Menu): Boolean {
+                return oldItem.name == newItem.name
+            }
 
-        override fun areContentsTheSame(oldItem: Menu, newItem: Menu): Boolean {
-            return oldItem.hashCode() == newItem.hashCode()
+            override fun areContentsTheSame(oldItem: Menu, newItem: Menu): Boolean {
+                return oldItem.hashCode() == newItem.hashCode()
+            }
         }
-
-    })
+    )
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return when (viewType) {
             AdapterLayoutMode.GRID.ordinal -> {
                 FoodItemGridViewHolder(
                     binding = ItemGridMenuBinding.inflate(
-                        LayoutInflater.from(parent.context), parent, false
-                    ), onItemClick
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    ),
+                    onItemClick
                 )
             }
             else -> {
                 FoodItemLinearViewHolder(
                     binding = ItemLinearMenuBinding.inflate(
-                        LayoutInflater.from(parent.context), parent, false
-                    ), onItemClick
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    ),
+                    onItemClick
                 )
             }
         }
@@ -64,5 +72,5 @@ class FoodListAdapter(
 
     fun refreshList() {
         notifyItemRangeChanged(0, differ.currentList.size)
-        }
+    }
 }

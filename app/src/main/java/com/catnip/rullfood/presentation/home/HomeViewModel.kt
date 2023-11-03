@@ -15,24 +15,24 @@ class HomeViewModel(
     private val repository: MenuRepository
 ) : ViewModel() {
     private val _menu = MutableLiveData<ResultWrapper<List<Menu>>>()
-    val menu : LiveData<ResultWrapper<List<Menu>>>
+    val menu: LiveData<ResultWrapper<List<Menu>>>
         get() = _menu
 
     private val _category = MutableLiveData<ResultWrapper<List<Category>>>()
-    val category : LiveData<ResultWrapper<List<Category>>>
+    val category: LiveData<ResultWrapper<List<Category>>>
         get() = _category
 
-    fun getMenus(category : String? = null){
+    fun getMenus(category: String? = null) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getMenus(category).collect(){
+            repository.getMenus(category).collect() {
                 _menu.postValue(it)
             }
         }
     }
 
-    fun getCategory(){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.getCategory().collect(){
+    fun getCategory() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getCategory().collect() {
                 _category.postValue(it)
             }
         }

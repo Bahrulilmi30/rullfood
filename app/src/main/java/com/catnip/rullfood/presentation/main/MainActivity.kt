@@ -17,12 +17,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpBottomNav()
-
-}
+    }
 
     private fun setUpBottomNav() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         binding.navView.setupWithNavController(navController)
-
     }
 }
