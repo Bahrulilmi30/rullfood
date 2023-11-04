@@ -14,7 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val repository: MenuRepository,
+    private val menuRepository: MenuRepository,
     private val userRepository: UserRepository
 
 ) : ViewModel() {
@@ -28,17 +28,17 @@ class HomeViewModel(
         get() = _category
 
     private val _userProfile = MutableLiveData<User?>()
-    val userProfile : LiveData<User?>
+    val userProfile: LiveData<User?>
         get() = _userProfile
 
-    fun getCurrentUser(){
+    fun getCurrentUser() {
         val result = userRepository.getCurrentUser()
         _userProfile.postValue(result)
     }
 
     fun getMenus(category: String? = null) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getMenus(category).collect() {
+            menuRepository.getMenus(category).collect() {
                 _menu.postValue(it)
             }
         }
@@ -46,10 +46,9 @@ class HomeViewModel(
 
     fun getCategory() {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getCategory().collect() {
+            menuRepository.getCategory().collect() {
                 _category.postValue(it)
             }
         }
     }
-
 }

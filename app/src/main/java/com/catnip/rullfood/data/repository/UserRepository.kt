@@ -1,9 +1,9 @@
 package com.catnip.rullfood.data.repository
 
 import android.net.Uri
+import com.catnip.rullfood.data.network.firebase.auth.FirebaseAuthDataSource
 import com.catnip.rullfood.model.User
 import com.catnip.rullfood.model.toUser
-import com.catnip.rullfood.data.network.firebase.auth.FirebaseAuthDataSource
 import com.catnip.rullfood.utils.ResultWrapper
 import com.catnip.rullfood.utils.proceedFlow
 import kotlinx.coroutines.flow.Flow

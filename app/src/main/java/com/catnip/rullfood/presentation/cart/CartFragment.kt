@@ -7,42 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.catnip.rullfood.R
-import com.catnip.rullfood.data.local.database.AppDatabase
-import com.catnip.rullfood.data.local.database.datasource.CartDataSource
-import com.catnip.rullfood.data.local.database.datasource.CartDatabaseDataSource
-import com.catnip.rullfood.data.network.api.datasource.RestaurantDataSourceImpl
-import com.catnip.rullfood.data.network.api.service.RestaurantService
-import com.catnip.rullfood.data.repository.CartRepository
-import com.catnip.rullfood.data.repository.CartRepositoryImpl
 import com.catnip.rullfood.databinding.FragmentCartBinding
 import com.catnip.rullfood.model.Cart
 import com.catnip.rullfood.presentation.cart.adapter.CartListAdapter
 import com.catnip.rullfood.presentation.cart.adapter.CartListener
 import com.catnip.rullfood.presentation.checkout.CheckoutActivity
-import com.catnip.rullfood.utils.GenericViewModelFactory
 import com.catnip.rullfood.utils.hideKeyboard
 import com.catnip.rullfood.utils.proceedWhen
 import com.catnip.rullfood.utils.toCurrencyFormat
-import com.chuckerteam.chucker.api.ChuckerInterceptor
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CartFragment : Fragment() {
 
     private lateinit var binding: FragmentCartBinding
 
-//    private val viewModel: CartViewModel by viewModels<CartViewModel>()
-
-    private val viewModel: CartViewModel by viewModels {
-        val database = AppDatabase.getInstance(requireContext())
-        val cartdao = database.cartDao()
-        val cartdataSource: CartDataSource = CartDatabaseDataSource(cartdao)
-        val chuckerInterceptor = ChuckerInterceptor(requireContext().applicationContext)
-        val service = RestaurantService.invoke(chuckerInterceptor)
-        val apiDataSource = RestaurantDataSourceImpl(service)
-        val repo: CartRepository = CartRepositoryImpl(cartdataSource, apiDataSource)
-        GenericViewModelFactory.create(CartViewModel(repo))
-    }
+    private val viewModel: CartViewModel by viewModel()
 
     private val adapter: CartListAdapter by lazy {
         CartListAdapter(object : CartListener {
