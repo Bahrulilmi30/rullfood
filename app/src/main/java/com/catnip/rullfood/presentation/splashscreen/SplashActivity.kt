@@ -2,31 +2,18 @@ package com.catnip.rullfood.presentation.splashscreen
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.catnip.rullfood.data.network.firebase.auth.FirebaseAuthDataSourceImpl
-import com.catnip.rullfood.data.repository.UserRepositoryImpl
 import com.catnip.rullfood.databinding.ActivitySplashBinding
 import com.catnip.rullfood.presentation.login.LoginActivity
 import com.catnip.rullfood.presentation.main.MainActivity
-import com.catnip.rullfood.utils.GenericViewModelFactory
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashActivity : AppCompatActivity() {
 
-    private val viewModel: SplashViewModel by viewModels {
-        GenericViewModelFactory.create(createViewModel())
-    }
-
-    private fun createViewModel(): SplashViewModel {
-        val firebaseAuth = FirebaseAuth.getInstance()
-        val dataSource = FirebaseAuthDataSourceImpl(firebaseAuth)
-        val repo = UserRepositoryImpl(dataSource)
-        return SplashViewModel(repo)
-    }
+    private val viewModel: SplashViewModel by viewModel()
 
     private val binding: ActivitySplashBinding by lazy {
         ActivitySplashBinding.inflate(layoutInflater)
@@ -40,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun checkIfUserLogin() {
         lifecycleScope.launch {
-            delay(2000)
+            delay(1000)
             if (viewModel.isUserLoggedIn()) {
                 navigateToMain()
             } else {

@@ -1,11 +1,11 @@
-package com.catnip.rullfood.data.database
+package com.catnip.rullfood.data.local.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.catnip.rullfood.data.database.dao.CartDao
-import com.catnip.rullfood.data.database.entity.CartEntity
+import com.catnip.rullfood.data.local.database.dao.CartDao
+import com.catnip.rullfood.data.local.database.entity.CartEntity
 
 @Database(
     entities = [CartEntity::class],

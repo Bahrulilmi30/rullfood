@@ -1,9 +1,9 @@
 package com.catnip.rullfood.data.repository
 
-import com.catnip.rullfood.data.database.datasource.CartDataSource
-import com.catnip.rullfood.data.database.entity.CartEntity
-import com.catnip.rullfood.data.database.mapper.toCartEntity
-import com.catnip.rullfood.data.database.mapper.toCartList
+import com.catnip.rullfood.data.local.database.datasource.CartDataSource
+import com.catnip.rullfood.data.local.database.entity.CartEntity
+import com.catnip.rullfood.data.local.database.mapper.toCartEntity
+import com.catnip.rullfood.data.local.database.mapper.toCartList
 import com.catnip.rullfood.data.network.api.datasource.RestaurantDataSource
 import com.catnip.rullfood.data.network.api.model.order.OrderItemRequest
 import com.catnip.rullfood.data.network.api.model.order.OrderRequest

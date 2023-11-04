@@ -6,7 +6,7 @@ plugins {
     id("com.google.devtools.ksp")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
-//    id("org.jlleitschuh.gradle.ktlint")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 android {
@@ -52,25 +52,36 @@ android {
             buildConfigField("String", "BASE_URL", "\"https://8b60ed65-a515-4900-afd7-2e97343b1936.mock.pstmn.io\"")
         }
     }
+    lint {
+        // Turns off checks for the issue IDs you specify.
+        disable += "ContentDescription"
+        // If set to true, turns off analysis progress reporting by lint.
+        quiet = true
+        // If set to true (default), stops the build if errors are found.
+        abortOnError = false
+        // If set to true, lint also checks all dependencies as part of its analysis.
+        // Recommended for projects consisting of an app with library dependencies.
+        checkDependencies = true
+    }
 }
 
-//tasks.getByPath("preBuild").dependsOn("ktlintFormat")
-//
-//ktlint {
-//    android.set(false)
-//    ignoreFailures.set(true)
-//    reporters {
-//        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN)
-//        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.CHECKSTYLE)
-//    }
-//    kotlinScriptAdditionalPaths {
-//        include(fileTree("scripts/"))
-//    }
-//    filter {
-//        exclude("**/generated/**")
-//        include("**/kotlin/**")
-//    }
-//}
+tasks.getByPath("preBuild").dependsOn("ktlintFormat")
+
+ktlint {
+    android.set(false)
+    ignoreFailures.set(true)
+    reporters {
+        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN)
+        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.CHECKSTYLE)
+    }
+    kotlinScriptAdditionalPaths {
+        include(fileTree("scripts/"))
+    }
+    filter {
+        exclude("**/generated/**")
+        include("**/kotlin/**")
+    }
+}
 
 dependencies {
 
@@ -124,5 +135,5 @@ dependencies {
     releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
 
     // koin
-//    implementation("io.insert-koin:koin-android:3.5.0")
+    implementation("io.insert-koin:koin-android:3.5.0")
 }

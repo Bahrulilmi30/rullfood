@@ -2,42 +2,22 @@ package com.catnip.rullfood.presentation.checkout
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.catnip.rullfood.R
-import com.catnip.rullfood.data.database.AppDatabase
-import com.catnip.rullfood.data.database.datasource.CartDataSource
-import com.catnip.rullfood.data.database.datasource.CartDatabaseDataSource
-import com.catnip.rullfood.data.network.api.datasource.RestaurantDataSourceImpl
-import com.catnip.rullfood.data.network.api.service.RestaurantService
-import com.catnip.rullfood.data.repository.CartRepository
-import com.catnip.rullfood.data.repository.CartRepositoryImpl
 import com.catnip.rullfood.databinding.ActivityCheckoutBinding
 import com.catnip.rullfood.presentation.cart.adapter.CartListAdapter
-import com.catnip.rullfood.utils.GenericViewModelFactory
 import com.catnip.rullfood.utils.proceedWhen
 import com.catnip.rullfood.utils.toCurrencyFormat
-import com.chuckerteam.chucker.api.ChuckerInterceptor
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CheckoutActivity : AppCompatActivity() {
     private val binding: ActivityCheckoutBinding by lazy {
         ActivityCheckoutBinding.inflate(layoutInflater)
     }
 
-//    private val viewModel: CheckoutViewModel by viewModel()
-
-    private val viewModel: CheckoutViewModel by viewModels {
-        val database = AppDatabase.getInstance(this)
-        val cartDao = database.cartDao()
-        val cartDataSource: CartDataSource = CartDatabaseDataSource(cartDao)
-        val chuckerInterceptor = ChuckerInterceptor(applicationContext)
-        val service = RestaurantService.invoke(chuckerInterceptor)
-        val apiDataSource = RestaurantDataSourceImpl(service)
-        val repo: CartRepository = CartRepositoryImpl(cartDataSource, apiDataSource)
-        GenericViewModelFactory.create(CheckoutViewModel(repo))
-    }
+    private val viewModel: CheckoutViewModel by viewModel()
 
     private val adapter: CartListAdapter by lazy {
         CartListAdapter()

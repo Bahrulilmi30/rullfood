@@ -5,42 +5,21 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
-import com.catnip.rullfood.data.database.AppDatabase
-import com.catnip.rullfood.data.database.datasource.CartDataSource
-import com.catnip.rullfood.data.database.datasource.CartDatabaseDataSource
-import com.catnip.rullfood.data.network.api.datasource.RestaurantDataSourceImpl
-import com.catnip.rullfood.data.network.api.service.RestaurantService
-import com.catnip.rullfood.data.repository.CartRepository
-import com.catnip.rullfood.data.repository.CartRepositoryImpl
 import com.catnip.rullfood.databinding.ActivityDetailBinding
 import com.catnip.rullfood.model.Menu
-import com.catnip.rullfood.utils.GenericViewModelFactory
 import com.catnip.rullfood.utils.proceedWhen
 import com.catnip.rullfood.utils.toCurrencyFormat
-import com.chuckerteam.chucker.api.ChuckerInterceptor
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class DetailActivity : AppCompatActivity() {
     private val binding: ActivityDetailBinding by lazy {
         ActivityDetailBinding.inflate(layoutInflater)
     }
 
-//    private val viewModel: DetailViewModel by viewModel { parametersOf(intent.extras) }
-
-    private val viewModel: DetailViewModel by viewModels {
-        val database = AppDatabase.getInstance(this)
-        val cartDao = database.cartDao()
-        val cartDataSource: CartDataSource = CartDatabaseDataSource(cartDao)
-        val chuckerInterceptor = ChuckerInterceptor(applicationContext)
-        val service = RestaurantService.invoke(chuckerInterceptor)
-        val apiDataSource = RestaurantDataSourceImpl(service)
-        val repo: CartRepository = CartRepositoryImpl(cartDataSource, apiDataSource)
-        GenericViewModelFactory.create(
-            DetailViewModel(repo, intent?.extras)
-        )
-    }
+    private val viewModel: DetailViewModel by viewModel { parametersOf(intent.extras) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

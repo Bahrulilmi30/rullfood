@@ -8,10 +8,6 @@ import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 
-/**
-Written with love by Muhammad Hermas Yuda Pamungkas
-Github : https://github.com/hermasyp
- **/
 interface FirebaseAuthDataSource {
     @Throws(exceptionClasses = [Exception::class])
     suspend fun doLogin(email: String, password: String): Boolean

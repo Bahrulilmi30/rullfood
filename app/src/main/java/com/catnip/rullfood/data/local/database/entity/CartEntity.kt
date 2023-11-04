@@ -1,4 +1,4 @@
-package com.catnip.rullfood.data.database.entity
+package com.catnip.rullfood.data.local.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

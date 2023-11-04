@@ -1,7 +1,7 @@
-package com.catnip.rullfood.data.database.datasource
+package com.catnip.rullfood.data.local.database.datasource
 
-import com.catnip.rullfood.data.database.dao.CartDao
-import com.catnip.rullfood.data.database.entity.CartEntity
+import com.catnip.rullfood.data.local.database.dao.CartDao
+import com.catnip.rullfood.data.local.database.entity.CartEntity
 import kotlinx.coroutines.flow.Flow
 
 interface CartDataSource {
