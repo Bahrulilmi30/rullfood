@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
                     binding.btnLogin.isVisible = true
                     Toast.makeText(
                         this,
-                        "Login Failed : ${it.exception?.message.orEmpty()}",
+                        getString(R.string.text_login_failed, it.exception?.message.orEmpty()),
                         Toast.LENGTH_SHORT
                     ).show()
                 },

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.catnip.rullfood.databinding.FragmentProfileBinding
 import com.catnip.rullfood.presentation.changepforile.ProfileActivity1
@@ -55,7 +54,6 @@ class ProfileFragment : Fragment() {
     private fun setUpUser() {
         viewModel.userProfile.observe(viewLifecycleOwner) {
             binding.etUsername.setText(it?.fullName)
-            Toast.makeText(requireContext(), it?.fullName, Toast.LENGTH_SHORT).show()
         }
     }
 }

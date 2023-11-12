@@ -3,6 +3,7 @@ package com.catnip.rullfood.presentation.changepforile
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.catnip.rullfood.R
 import com.catnip.rullfood.databinding.ActivityProfile1Binding
 import com.catnip.rullfood.utils.proceedWhen
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,7 +27,7 @@ class ProfileActivity1 : AppCompatActivity() {
         viewModel.updateResultProfile.observe(this) {
             it.proceedWhen(
                 doOnSuccess = {
-                    Toast.makeText(this, "Update Profile Success", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.text_update_success), Toast.LENGTH_LONG).show()
                     finish()
                 }
 
@@ -35,6 +36,9 @@ class ProfileActivity1 : AppCompatActivity() {
     }
 
     private fun setClickListener() {
+        binding.ivBack.setOnClickListener {
+            onBackPressed()
+        }
         binding.btnSave.setOnClickListener {
             updateProfile()
         }
@@ -52,7 +56,7 @@ class ProfileActivity1 : AppCompatActivity() {
     private fun setUpUser() {
         viewModel.userProfile.observe(this) {
             binding.etUsername.setText(it?.fullName)
-            Toast.makeText(this, it?.fullName, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, it?.fullName, Toast.LENGTH_SHORT).show()
         }
     }
 }

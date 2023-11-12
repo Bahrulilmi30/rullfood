@@ -102,14 +102,18 @@ class HomeFragment : Fragment() {
             it.proceedWhen(
                 doOnSuccess = {
                     binding.inclMainMenu.rvMenu.isVisible = true
+                    binding.inclMainMenu.layoutStateMenu.root.isVisible = false
+                    binding.inclMainMenu.layoutStateMenu.tvError.isVisible = false
+                    binding.inclMainMenu.layoutStateMenu.pbLoading.isVisible = false
                     it.payload?.let { menus ->
                         adapter.setData(menus)
                     }
                 },
                 doOnLoading = {
+                    binding.inclMainMenu.layoutStateMenu.root.isVisible = true
+                    binding.inclMainMenu.layoutStateMenu.pbLoading.isVisible = true
+                    binding.inclMainMenu.layoutStateMenu.tvError.isVisible = false
                     binding.inclMainMenu.rvMenu.isVisible = false
-                    binding.inclTopMenu.layoutStateCategory.pbLoading.isVisible = true
-                    binding.inclTopMenu.layoutStateCategory.tvError.isVisible = false
                 },
                 doOnError = {
                     binding.inclMainMenu.rvMenu.isVisible = false
@@ -127,11 +131,15 @@ class HomeFragment : Fragment() {
             it.proceedWhen(
                 doOnSuccess = {
                     binding.inclTopMenu.rvCategory.isVisible = true
+                    binding.inclTopMenu.layoutStateCategory.root.isVisible = false
+                    binding.inclTopMenu.layoutStateCategory.tvError.isVisible = false
+                    binding.inclTopMenu.layoutStateCategory.pbLoading.isVisible = false
                     it.payload?.let { category ->
                         categoryAdapter.setData(category)
                     }
                 },
                 doOnLoading = {
+                    binding.inclTopMenu.layoutStateCategory.root.isVisible = true
                     binding.inclTopMenu.rvCategory.isVisible = false
                     binding.inclTopMenu.layoutStateCategory.pbLoading.isVisible = true
                     binding.inclTopMenu.layoutStateCategory.tvError.isVisible = false

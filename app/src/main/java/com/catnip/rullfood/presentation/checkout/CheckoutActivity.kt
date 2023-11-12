@@ -70,7 +70,7 @@ class CheckoutActivity : AppCompatActivity() {
                     binding.layoutContent.root.isVisible = false
                     binding.layoutContent.rvCart.isVisible = false
                     binding.cvSectionOrder.isVisible = false
-                    Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.text_error), Toast.LENGTH_LONG).show()
                 },
                 doOnEmpty = { data ->
                     binding.layoutState.root.isVisible = true
@@ -83,7 +83,7 @@ class CheckoutActivity : AppCompatActivity() {
                     binding.layoutContent.root.isVisible = false
                     binding.layoutContent.rvCart.isVisible = false
                     binding.cvSectionOrder.isVisible = false
-                    Toast.makeText(this, "Empty", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.text_empty), Toast.LENGTH_LONG).show()
                 }
             )
         }
@@ -100,7 +100,7 @@ class CheckoutActivity : AppCompatActivity() {
                 doOnError = {
                     binding.layoutState.root.isVisible = false
                     binding.layoutState.pbLoading.isVisible = false
-                    Toast.makeText(this, "Checkout Error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.text_co_error), Toast.LENGTH_SHORT).show()
                 },
                 doOnLoading = {
                     binding.layoutState.root.isVisible = true
@@ -112,7 +112,7 @@ class CheckoutActivity : AppCompatActivity() {
 
     private fun showDialogCheckoutSuccess() {
         AlertDialog.Builder(this)
-            .setMessage("Checkout Success")
+            .setMessage(getString(R.string.text_co_success))
             .setPositiveButton(getString(R.string.text_Done)) { _, _ ->
                 viewModel.clearCart()
                 finish()

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
+import com.catnip.rullfood.R
 import com.catnip.rullfood.databinding.ActivityDetailBinding
 import com.catnip.rullfood.model.Menu
 import com.catnip.rullfood.utils.proceedWhen
@@ -50,7 +51,11 @@ class DetailActivity : AppCompatActivity() {
         viewModel.addToCartResult.observe(this) {
             it.proceedWhen(
                 doOnSuccess = {
-                    Toast.makeText(this, "Add to cart success !", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        getString(R.string.text_success_add_to_cart),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     finish()
                 },
                 doOnError = {

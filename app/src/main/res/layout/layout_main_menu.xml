@@ -51,7 +51,9 @@
         tools:listitem="@layout/item_linear_menu" />
 
     <include
-        android:id="@+id/layout_state_category"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/layout_state_menu"
         layout="@layout/common_layout_content_state"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

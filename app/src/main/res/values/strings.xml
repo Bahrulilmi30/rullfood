@@ -59,4 +59,11 @@
     <string name="text_list_of_menu">List of menu</string>
     <string name="hello">Hello %1$s</string>
     <string name="text_btn_save">Save</string>
+    <string name="text_empty">Empty</string>
+    <string name="text_co_error">Checkout Error</string>
+    <string name="text_co_success">Checkout Success</string>
+    <string name="text_error">Error</string>
+    <string name="text_update_success">Update Profile Success</string>
+    <string name="text_success_add_to_cart">Add to cart success !</string>
+    <string name="text_login_failed">Login Failed : %1$s</string>
 </resources>
