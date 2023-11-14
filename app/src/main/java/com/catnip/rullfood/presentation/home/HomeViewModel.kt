@@ -38,7 +38,9 @@ class HomeViewModel(
 
     fun getMenus(category: String? = null) {
         viewModelScope.launch(Dispatchers.IO) {
-            menuRepository.getMenus(category).collect() {
+            menuRepository.getMenus(
+                if (category == "all") null else category
+            ).collect() {
                 _menu.postValue(it)
             }
         }
