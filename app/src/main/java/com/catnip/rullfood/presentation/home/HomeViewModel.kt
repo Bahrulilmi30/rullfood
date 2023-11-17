@@ -18,6 +18,7 @@ class HomeViewModel(
     private val userRepository: UserRepository
 
 ) : ViewModel() {
+//    val categories = menuRepository.getCategory().asLiveData(Dispatchers.IO)
 
     private val _menu = MutableLiveData<ResultWrapper<List<Menu>>>()
     val menu: LiveData<ResultWrapper<List<Menu>>>

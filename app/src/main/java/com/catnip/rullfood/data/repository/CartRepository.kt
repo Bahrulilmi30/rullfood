@@ -14,9 +14,10 @@ import com.catnip.rullfood.utils.proceed
 import com.catnip.rullfood.utils.proceedFlow
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
+import java.lang.Exception
 
 interface CartRepository {
 
@@ -59,6 +60,8 @@ class CartRepositoryImpl(
                 } else {
                     it
                 }
+            }.catch {
+                emit(ResultWrapper.Error(Exception(it)))
             }
             .onStart {
                 emit(ResultWrapper.Loading())
@@ -83,8 +86,6 @@ class CartRepositoryImpl(
                 )
                 affecttedRow > 0
             }
-        } ?: flow {
-            emit(ResultWrapper.Error(IllegalStateException("Product ID not found")))
         }
     }
 
