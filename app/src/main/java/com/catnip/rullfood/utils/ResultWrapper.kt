@@ -30,6 +30,7 @@ fun <T> ResultWrapper<T>.proceedWhen(
         is ResultWrapper.Error -> doOnError?.invoke(this)
         is ResultWrapper.Loading -> doOnLoading?.invoke(this)
         is ResultWrapper.Empty -> doOnEmpty?.invoke(this)
+        else -> {}
     }
 }
 

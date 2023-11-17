@@ -21,6 +21,8 @@
     <include
         android:id="@+id/layout_state_category"
         layout="@layout/common_layout_content_state"
+        app:layout_constraintTop_toTopOf="@id/rv_category"
+        app:layout_constraintBottom_toBottomOf="@id/rv_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
